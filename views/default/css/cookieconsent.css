@@ -94,4 +94,9 @@
 .cc_container a, .cc_container a:visited {
     text-decoration: none;
     transition: color 200ms ease 0s;
+    color:#a7b3b9;
+}
+.cc_container a:hover {
+    color:#fff;
+
 }

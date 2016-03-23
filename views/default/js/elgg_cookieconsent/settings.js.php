@@ -13,12 +13,17 @@ $learnMore = elgg_get_plugin_setting('learnMore', elgg_cookieconsent);
 if (!($learnMore)){
     $learnMore = elgg_echo('elgg_cookieconsent:learnmore');
 }
+$theme = elgg_get_plugin_setting('theme', elgg_cookieconsent);
+if (!($theme)){
+    $theme = false;
+}
 //$settings = elgg_get_plugin_by_id('elgg_cookieconsent')->getAllSettings(); //function seems not to excist? Is in the docs though.
 $settings = [
     'message' => $message,
     'dismiss' => $dismiss,
     'link' => $url,
     'learnMore' => $learnMore,
+    'theme' => $theme,
 ];
 
 ?>

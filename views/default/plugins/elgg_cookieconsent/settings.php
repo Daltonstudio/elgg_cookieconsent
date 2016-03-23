@@ -1,6 +1,16 @@
 <?php
 elgg_require_js('elgg_cookieconsent/cookieconsent_preview');
 echo "<p>";
+echo elgg_echo('elgg_cookieconsent:settings:theme');
+echo "<div class='elgg-subtext'>" .elgg_echo('elgg_cookieconsent:settings:theme:note')."</div>";
+echo elgg_view('input/select', array(
+	'name' => 'params[theme]',
+	'id' => 'theme',
+	'value' => $vars['entity']->theme,
+	'options_values' => array('' => elgg_echo("default (custom)"), 'light-top' => elgg_echo('Light-top'), 'light-bottom' => elgg_echo('Light-bottom'), 'light-floating' => elgg_echo('Light-floating'), 'dark-top' => elgg_echo('Dark-top'), 'dark-bottom' => elgg_echo('Dark-bottom'), 'dark-floating' => elgg_echo('Dark-floating'))
+));
+echo "</p>";
+echo "<p>";
 echo elgg_echo('elgg_cookieconsent:settings:message');
 echo "<div class='elgg-subtext'>" .elgg_echo('elgg_cookieconsent:settings:message:note')."</div>";
 echo elgg_view('input/text', array(

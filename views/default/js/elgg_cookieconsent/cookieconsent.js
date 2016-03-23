@@ -1,14 +1,4 @@
-// <script>
-
-/**
- * Javascript for the cookieconsent plugin
- */
-define(function(require) {
-	var $ = require('jquery');
-	var elgg = require('elgg');
-
-//begin consent js
-
+(function () {
   // Stop from running again, if accidently included more than once.
   if (window.hasCookieConsent) return;
   window.hasCookieConsent = true;
@@ -26,11 +16,13 @@ define(function(require) {
   // Name of cookie to be set when dismissed
   var DISMISSED_COOKIE = 'cookieconsent_dismissed';
 
-  // The path to built in themes (s3 bucket)
-  var THEME_BUCKET_PATH = '//s3.amazonaws.com/cc.silktide.com/';
+  // The path to built in themes
+  // Note: Directly linking to a version on the CDN like this is horrible, but it's less horrible than people downloading the code
+  // then discovering that their CSS bucket disappeared
+  var THEME_BUCKET_PATH = '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/';
 
   // No point going further if they've already dismissed.
-  if (document.cookie.indexOf(DISMISSED_COOKIE) > -1) {
+  if (document.cookie.indexOf(DISMISSED_COOKIE) > -1 || (window.navigator && window.navigator.CookiesOK)) {
     return;
   }
 
@@ -101,11 +93,25 @@ define(function(require) {
       return null;
     },
 
-    setCookie: function (name, value, expirydays) {
+    setCookie: function (name, value, expiryDays, domain, path) {
+      expiryDays = expiryDays || 365;
+
       var exdate = new Date();
-      expirydays = expirydays || 365;
-      exdate.setDate(exdate.getDate() + expirydays);
-      document.cookie = name + '=' + value + '; expires=' + exdate.toUTCString() + '; path=/'
+      exdate.setDate(exdate.getDate() + expiryDays);
+
+      var cookie = [
+        name + '=' + value,
+        'expires=' + exdate.toUTCString(),
+        'path=' + path || '/'
+      ];
+
+      if (domain) {
+        cookie.push(
+          'domain=' + domain
+        );
+      }
+
+      document.cookie = cookie.join(';');
     },
 
     addEventListener: function (el, event, eventListener) {
@@ -149,7 +155,7 @@ define(function(require) {
     var insertReplacements = function (htmlStr, scope) {
       return htmlStr.replace(/\{\{(.*?)\}\}/g, function (_match, sub) {
         var tokens = sub.split('||');
-        var value;
+        var value, token;
         while (token = tokens.shift()) {
           token = token.trim();
 
@@ -227,13 +233,20 @@ define(function(require) {
       dismiss: 'Got it!',
       learnMore: 'More info',
       link: null,
+      target: '_self',
       container: null, // selector
       theme: 'light-floating',
+      domain: null, // default to current domain.
+      path: '/', 
+      expiryDays: 365,
       markup: [
         '<div class="cc_banner-wrapper {{containerClasses}}">',
         '<div class="cc_banner cc_container cc_container--open">',
-        '<a href="#null" data-cc-event="click:dismiss" class="cc_btn elgg-button elgg-button-submit">{{options.dismiss}}</a>',
-        '<p class="cc_message">{{options.message}} <a data-cc-if="options.link" class="cc_more_info" href="{{options.link || "#null"}}">{{options.learnMore}}</a></p>',
+        '<a href="#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">{{options.dismiss}}</a>',
+
+        '<p class="cc_message">{{options.message}} <a data-cc-if="options.link" target="{{ options.target }}" class="cc_more_info" href="{{options.link || "#null"}}">{{options.learnMore}}</a></p>',
+
+        '<a class="cc_logo" target="_blank" href="http://silktide.com/cookieconsent">Cookie Consent plugin for the EU cookie law</a>',
         '</div>',
         '</div>'
       ]
@@ -316,13 +329,14 @@ define(function(require) {
     },
 
     dismiss: function (evt) {
-      evt.preventDefault();
+      evt.preventDefault && evt.preventDefault();
+      evt.returnValue = false;
       this.setDismissedCookie();
       this.container.removeChild(this.element);
     },
 
     setDismissedCookie: function () {
-      Util.setCookie(DISMISSED_COOKIE, 'yes');
+      Util.setCookie(DISMISSED_COOKIE, 'yes', this.options.expiryDays, this.options.domain, this.options.path);
     }
   };
 
@@ -331,12 +345,11 @@ define(function(require) {
   (init = function () {
     if (!initialized && document.readyState == 'complete') {
       cookieconsent.init();
-      initalized = true;
-      window[OPTIONS_UPDATER] = cookieconsent.setOptionsOnTheFly.bind(cookieconsent);
+      initialized = true;
+      window[OPTIONS_UPDATER] = Util.bind(cookieconsent.setOptionsOnTheFly, cookieconsent);
     }
   })();
 
   Util.addEventListener(document, 'readystatechange', init);
 
-//end consent js
-});
+})();
