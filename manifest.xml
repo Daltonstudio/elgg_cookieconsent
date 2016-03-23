@@ -3,11 +3,11 @@
 	<name>Elgg Cookieconsent</name>
 	<id>elgg_cookieconsent</id>
 	<author>Daltonmedia</author>
-	<version>1.0</version>
+	<version>1.1</version>
 	<category>communication</category>
 	<description>Ads a configurable cookie consent message to users</description>
 	<website>http://www.daltonmedia.be/</website>
-	<license>GNU General Public License version 3</license>
+	<license>MIT</license>
 	<requires>
 		<type>elgg_release</type>
 		<version>1.9</version>
