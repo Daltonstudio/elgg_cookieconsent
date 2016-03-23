@@ -2,7 +2,9 @@
 
 $english = array(
     //settings    
-    'elgg_cookieconsent:settings:message' => 'The message you want to show to your visitors',
+    'elgg_cookieconsent:settings:theme' => 'The theme for Cookieconcent',
+    'elgg_cookieconsent:settings:theme:note' => "Leave blank to use the default theme you can override with your own plugin. If you wish, you can select a cookieconcent theme here",
+	  'elgg_cookieconsent:settings:message' => 'The message you want to show to your visitors',
     'elgg_cookieconsent:settings:message:note' => "If left empty this message can be translated by using: 'elgg_cookieconsent:message' in your translation file.
     <p><blockquote>The default message when it's left blank is:'This website uses cookies to ensure you get the best experience on our website'</blockquote></p>",
     'elgg_cookieconsent:settings:dismiss' => 'The text on the dismissbutton',
