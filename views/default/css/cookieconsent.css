@@ -1,0 +1,97 @@
+
+.cc_banner-wrapper {
+    position: relative;
+    z-index: 9001;
+}
+.cc_container .cc_btn {
+    cursor: pointer;
+    font-size: 0.6em;
+    line-height: 1em;
+    text-align: center;
+    transition: font-size 200ms ease 0s;
+}
+.cc_container .cc_message {
+    font-size: 0.6em;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    transition: font-size 200ms ease 0s;
+}
+
+.cc_container .cc_logo:hover, .cc_container .cc_logo:active {
+    opacity: 1;
+}
+@media screen and (min-width: 500px) {
+.cc_container .cc_btn {
+    font-size: 0.8em;
+}
+.cc_container .cc_message {
+    font-size: 0.8em;
+}
+}
+@media screen and (min-width: 768px) {
+.cc_container .cc_btn {
+    font-size: 1em;
+}
+.cc_container .cc_message {
+    font-size: 1em;
+    line-height: 1em;
+}
+}
+@media screen and (min-width: 992px) {
+.cc_container .cc_message {
+    font-size: 1em;
+}
+}
+@media print {
+.cc_banner-wrapper, .cc_container {
+    display: none;
+}
+}
+.cc_container {
+    overflow: hidden;
+    padding: 10px;
+}
+.cc_container .cc_btn {
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-left: 10px;
+    max-width: 180px;
+    padding: 8px 10px;
+    text-align: center;
+    width: 33%;
+}
+.cc_container .cc_message {
+    display: block;
+}
+@media screen and (min-width: 500px) {
+.cc_container .cc_message {
+    margin-top: 0.5em;
+}
+}
+@media screen and (min-width: 768px) {
+.cc_container {
+    padding: 15px 30px;
+}
+.cc_container .cc_btn {
+    padding: 8px 15px;
+}
+}
+.cc_container {
+    background: #222 none repeat scroll 0 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: "Helvetica Neue Light","HelveticaNeue-Light","Helvetica Neue",Calibri,Helvetica,Arial;
+    font-size: 17px;
+}
+
+.cc_container .cc_btn, .cc_container .cc_btn:visited {
+
+    transition: background 200ms ease-in-out 0s, color 200ms ease-in-out 0s, box-shadow 200ms ease-in-out 0s;
+}
+
+.cc_container a, .cc_container a:visited {
+    text-decoration: none;
+    transition: color 200ms ease 0s;
+}
