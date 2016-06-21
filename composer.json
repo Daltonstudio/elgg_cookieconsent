@@ -16,5 +16,5 @@
 		"php": ">=5.5",
 		"composer/installers": "~1.0"
 	},
-	"license": "GPL-2.0",
+	"license": "GPL-2.0"
 }
