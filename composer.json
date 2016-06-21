@@ -1,6 +1,11 @@
 {
     "name": "Daltonmedia/elgg_cookieconsent",
-    "type": "elgg-plugin",
+	"type": "elgg-plugin",
+	"description": "Adds a configurable cookie consent message to your Elgg install",
+	"homepage": "http://daltonstudio.be",
+	"keywords": [
+		"elgg", "plugin", "cookie", "cookies", "cookieconsent"
+	],    
     "require": {
 		"composer/installers": "~1.0",
     },
