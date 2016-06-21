@@ -79,8 +79,9 @@
 }
 }
 .cc_container {
-    background: #222 none repeat scroll 0 0;
+    background: #424242 none repeat scroll 0 0;
     box-sizing: border-box;
+    border-bottom:1px solid white;
     color: #fff;
     font-family: "Helvetica Neue Light","HelveticaNeue-Light","Helvetica Neue",Calibri,Helvetica,Arial;
     font-size: 17px;
@@ -89,6 +90,7 @@
 .cc_container .cc_btn, .cc_container .cc_btn:visited {
 
     transition: background 200ms ease-in-out 0s, color 200ms ease-in-out 0s, box-shadow 200ms ease-in-out 0s;
+    color:white;
 }
 
 .cc_container a, .cc_container a:visited {
