@@ -15,7 +15,8 @@ $english = array(
     'elgg_cookieconsent:settings:learnmorebutton' => 'Text of the learn-more button',
     'elgg_cookieconsent:settings:learnmorebutton:note' => "In the case you specified a learn-more URL above, you can edit the text to show on the button here.</br> If left empty, it can be translated by using: 'elgg_cookieconsent:learnmore' in your translation file.
     <p><blockquote>The default button when it's left blank is:'Learn more'</blockquote></p>",
-    'elgg_cookieconsent:settings:save:note' => "Your cookie is automaticly reset when you submit your form. Flush the cache for your settings to have effect and browse to your website to see how it looks.",
+    'elgg_cookieconsent:settings:save:note' => "Your cookie is automaticly reset when you submit your form. Flush the cache for your settings to have effect and browse to your website to see how it      looks.",
+    'elgg_cookieconsent:settings:save:message' => "Saved, flush cache for changes to take effect.",
     // translatable cookie consent message
     'elgg_cookieconsent:message' => 'This website uses cookies to ensure you get the best experience on our website',
     'elgg_cookieconsent:dismiss' => 'Got it!',
